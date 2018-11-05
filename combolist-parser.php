@@ -29,31 +29,31 @@
                 $total_lines = count_lines($file);
                 echo 'Welcome in Combolist parser'.PHP_EOL;
                 echo '[!] Total lines to parse in '.$file.': '.$total_lines.PHP_EOL;
-                while (($line = trim(fgets($handle))) !== false){
+                while (($line = fgets($handle)) !== false){
                     if (!empty($line)){
                         $is_unknow = true;
                         foreach ($filter as $key => $value){
-                            $splitted_line = explode('@', $line);
+                            $splitted_line = explode('@', trim($line));
                             $tmp_value = explode(':', $splitted_line[1]);
                             if (is_array($value)){
                                 for ($i = 0; $i < count($value); $i++){
                                     if ($tmp_value[0] === $value[$i]){
-                                        file_put_contents(RESULTS_FOLDER.$key.'.txt', $line.PHP_EOL, FILE_APPEND | LOCK_EX);
+                                        file_put_contents(RESULTS_FOLDER.$key.'.txt', trim($line).PHP_EOL, FILE_APPEND | LOCK_EX);
                                         $is_unknow = false;
                                     }
                                 }
                             }else{
                                 if ($tmp_value[0] === $value){
-                                    file_put_contents(RESULTS_FOLDER.$key.'.txt', $line.PHP_EOL, FILE_APPEND | LOCK_EX);
+                                    file_put_contents(RESULTS_FOLDER.$key.'.txt', trim($line).PHP_EOL, FILE_APPEND | LOCK_EX);
                                     $is_unknow = false;
                                 }
                             }
                         }
-                        if($is_unknow) file_put_contents(RESULTS_FOLDER.'unknow.txt', $line.PHP_EOL, FILE_APPEND | LOCK_EX);
+                        if($is_unknow) file_put_contents(RESULTS_FOLDER.'unknow.txt', trim($line).PHP_EOL, FILE_APPEND | LOCK_EX);
                     }
                 }
-                fclose($handle);
             }
+			fclose($handle);
         }else { echo '[-] File not found'.PHP_EOL; }
     }else { echo '[!] Usage: php combolist-parser.php list.txt'.PHP_EOL; }
 
