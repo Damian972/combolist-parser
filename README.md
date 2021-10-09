@@ -18,3 +18,5 @@ php combolist-parser -f list.txt
 
 - The progression is now displayed
 - Decide if you want logs, unknow results by passing arguments
+- Email validation
+- Support for passwords that contain '**:'** character
