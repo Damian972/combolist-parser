@@ -3,20 +3,20 @@
 #### Usage:
 
 ```BASH
-php combolist-parser -f list.txt
+php combolist-parser.php -f list.txt
 ```
 
-- Supported options:
-  ````bash
-  -f <file>       File to parse
-  -h, --help      Show help
-  -l, --logs      Save errors logs
-  -u, --unknow    Save unknow results
-  ````
+-   Supported options:
+    ```bash
+    -f <file>       File to parse
+    -h, --help      Show help
+    -l, --logs      Save errors logs
+    -u, --unknow    Save unknow results
+    ```
 
 #### What's new 🎉️
 
-- The progression is now displayed
-- Decide if you want logs, unknow results by passing arguments
-- Email validation
-- Support for passwords that contain '**:'** character
+-   The progression is now displayed
+-   Decide if you want logs, unknow results by passing arguments
+-   Email validation
+-   Support for passwords that contain '**:'** character
